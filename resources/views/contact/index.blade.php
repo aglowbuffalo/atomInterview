@@ -59,7 +59,9 @@
             </div>
 
             <div>
-                <button type="submit" id="contact-submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full"> Submit </button>
+                <button type="submit" id="contact-submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full hover:bg-green-700">
+                    Submit
+                </button>
             </div>
 
         </form>
@@ -73,6 +75,12 @@
         $('#emailError').text('');
         $('#phoneError').text('');
         $('#messageError').text('');
+    }
+    function resetForm(){
+        $('#name').val('');
+        $('#email').val('');
+        $('#phone').val('');
+        $('#message').val('');
     }
 
     var flag = 0;
@@ -107,14 +115,12 @@
                 message:message,
             },
             success:function(response) {
-                console.log(response);
                 alert(response.success);
                 resetErrors();
+                resetForm();
                 flag = 0;
             },
             error:function (response) {
-                console.log(response);
-
                 resetErrors();
                 $('#nameError').text(response.responseJSON.errors.name);
                 $('#emailError').text(response.responseJSON.errors.email);
