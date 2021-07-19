@@ -18,7 +18,6 @@ class ContacController extends Controller
     }
 
     public function submit(InquiriesPostRequest $request){
-
         $inquiries = $this->store($request);
 
         $this->sendMail($inquiries);

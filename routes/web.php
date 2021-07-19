@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContacController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +22,7 @@ Route::post('/contact', [ContacController::class, 'submit']);
 Route::get('/', function () {
     return view('home.index');
 })->name('home');
+
+// Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
