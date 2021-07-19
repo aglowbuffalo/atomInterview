@@ -22,9 +22,9 @@ class ContacController extends Controller
         $inquiries = $this->store($request);
 
         $this->sendMail($inquiries);
+
         if($request->ajax()){
-            $validated = $request->validated();
-            $this->jsonResponse($inquiries);
+            return response()->json(['success'=>'Contact form submitted successfully']);
         }else{
             return view('home.index');
         }
@@ -43,8 +43,4 @@ class ContacController extends Controller
         Mail::to('mail@example.com')->send($data);
    }
 
-   public function jsonResponse(Inquiries $inquirie){
-        return response()->json(['success'=>'Contact form submitted successfully']);
-
-   }
 }

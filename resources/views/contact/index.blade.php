@@ -68,7 +68,7 @@
 
 <script>
   $(document).ready(function() {
-    function restErrors(){
+    function resetErrors(){
         $('#nameError').text('');
         $('#emailError').text('');
         $('#phoneError').text('');
@@ -107,15 +107,15 @@
                 message:message,
             },
             success:function(response) {
-                console.log(response.success);
+                console.log(response);
                 alert(response.success);
-                // restErrors();
+                resetErrors();
                 flag = 0;
             },
             error:function (response) {
-                console.log('error');
+                console.log(response);
 
-                restErrors();
+                resetErrors();
                 $('#nameError').text(response.responseJSON.errors.name);
                 $('#emailError').text(response.responseJSON.errors.email);
                 $('#phoneError').text(response.responseJSON.errors.phone);
